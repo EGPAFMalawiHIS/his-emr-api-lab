@@ -12,13 +12,13 @@ module Lab
         date = validate_date(date || Date.today)
         counter = find_counter(date)
 
+        accession_number = nil
+
         counter.with_lock do
           accession_number = format_accession_number(date, counter.value)
-          counter.value += 1
-          counter.save!
-
-          return accession_number
+          counter.update!(value: counter.value + 1)
         end
+        accession_number
       end
 
       private
