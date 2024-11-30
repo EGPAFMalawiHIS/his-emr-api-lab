@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# testing
 module Lab
   class OrdersController < ApplicationController
     skip_before_action :authenticate, only: %i[order_status order_result]
