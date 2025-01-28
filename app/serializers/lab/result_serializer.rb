@@ -15,7 +15,7 @@ module Lab
             concept_id: concept_name&.concept_id,
             name: concept_name&.name
           },
-          date: measure.obs_datetime,
+          date: measure.date_created,
           value:,
           value_type:,
           value_modifier: measure.value_modifier
