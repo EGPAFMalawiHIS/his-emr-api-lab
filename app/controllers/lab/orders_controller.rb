@@ -11,6 +11,8 @@ module Lab
         OrdersService.order_test(order_params)
       end
 
+      OrdersService.update_order_status({ 'tracking_number' => order_params_list[0]['accession_number'], 'status' => "Drawn" })
+      
       orders.each { |order| Lab::PushOrderJob.perform_later(order.fetch(:order_id)) }
 
       render json: orders, status: :created
